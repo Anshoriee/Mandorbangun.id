@@ -32,7 +32,7 @@ CREATE TABLE `admins` (
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `admins`
@@ -52,7 +52,7 @@ CREATE TABLE `alur_kerja` (
   `image_path` varchar(255) NOT NULL,
   `title` varchar(255) DEFAULT NULL,
   `order_num` int NOT NULL DEFAULT '99'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `alur_kerja`
@@ -72,7 +72,7 @@ CREATE TABLE `gallery_categories` (
   `name` varchar(100) NOT NULL,
   `title` varchar(100) NOT NULL,
   `order_num` int DEFAULT '99'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `gallery_categories`
@@ -96,7 +96,7 @@ CREATE TABLE `gallery_images` (
   `caption` varchar(255) DEFAULT NULL,
   `order_num` int DEFAULT '1',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `gallery_images`
@@ -174,7 +174,7 @@ CREATE TABLE `gallery_items` (
   `category_id` int NOT NULL,
   `order_num` int DEFAULT '99',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `gallery_items`
@@ -203,7 +203,7 @@ CREATE TABLE `monthly_visits` (
   `id` int NOT NULL,
   `session_id` varchar(255) NOT NULL,
   `visit_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `monthly_visits`
@@ -267,7 +267,7 @@ CREATE TABLE `popup` (
   `show_frequency` enum('always','once_per_session','once_per_day') DEFAULT 'always',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `popup`
@@ -289,7 +289,7 @@ CREATE TABLE `portfolio` (
   `order_num` int DEFAULT '99',
   `service_id` int DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `portfolio`
@@ -315,7 +315,7 @@ CREATE TABLE `services` (
   `description` text NOT NULL,
   `icon_class` varchar(50) NOT NULL,
   `order_num` int DEFAULT '99'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `services`
@@ -335,7 +335,7 @@ INSERT INTO `services` (`id`, `title`, `description`, `icon_class`, `order_num`)
 CREATE TABLE `settings` (
   `setting_key` varchar(50) NOT NULL,
   `setting_value` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `settings`
@@ -356,7 +356,7 @@ CREATE TABLE `visitors` (
   `id` int NOT NULL,
   `session_id` varchar(255) NOT NULL,
   `last_activity` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `visitors`

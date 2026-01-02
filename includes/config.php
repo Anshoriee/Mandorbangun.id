@@ -17,7 +17,7 @@ if (ENVIRONMENT === 'production') {
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root'); 
 define('DB_PASSWORD', ''); 
-define('DB_NAME', 'mandorbangun.id'); 
+define('DB_NAME', 'mandorbangun_db'); 
 
 // Pengaturan Website
 define('WEBSITE_NAME', 'Mandorbangun.id');
