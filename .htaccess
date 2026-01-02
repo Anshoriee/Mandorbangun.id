@@ -1,0 +1,31 @@
+# ===================================================================
+# FILE .HTACCESS UNTUK KEAMANAN WEBSITE MANDORBANGUN.ID
+# ===================================================================
+
+# Mencegah browsing atau melihat isi direktori
+Options -Indexes
+
+# Melindungi file-file sensitif agar tidak bisa diakses dari browser
+# Termasuk file backup database (.sql) dan file konfigurasi lainnya.
+<FilesMatch "\.(sql|log|ini|env|zip|rar|yml)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Mencegah akses langsung ke file config.php
+<Files config.php>
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Mengatur Header Keamanan HTTP untuk melindungi dari serangan umum
+<IfModule mod_headers.c>
+    # Mencegah browser menebak tipe konten (melindungi dari serangan XSS)
+    Header set X-Content-Type-Options "nosniff"
+
+    # Mencegah website Anda ditampilkan dalam frame di situs lain (melindungi dari clickjacking)
+    Header set X-Frame-Options "SAMEORIGIN"
+
+    # Mengaktifkan filter XSS bawaan browser
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>

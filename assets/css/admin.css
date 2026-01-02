@@ -1,0 +1,818 @@
+/* General Admin Styles - New Theme */
+:root {
+    --sidebar-bg: #212529;
+    --content-bg: #f8f9fa;
+    --card-bg: #ffffff;
+    --gold: #D4AF37;
+    --text-dark: #343a40;
+    --text-light: #f8f9fa;
+    --text-muted: #6c757d;
+    --border-color: #dee2e6;
+    --font-primary: 'Poppins', sans-serif;
+}
+
+body.admin-page {
+    background-color: var(--content-bg);
+    color: var(--text-dark);
+    font-family: var(--font-primary);
+    margin: 0;
+}
+
+.admin-wrapper {
+    display: flex;
+    position: relative;
+    transition: margin-left 0.3s ease;
+}
+
+/* =================================
+   Sidebar - New Theme
+   ================================= */
+
+.admin-sidebar {
+    width: 250px;
+    background-color: var(--sidebar-bg);
+    color: var(--text-light);
+    position: fixed;
+    height: 100%;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    transition: left 0.3s ease;
+}
+
+.sidebar-header {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #343a40;
+}
+
+/* Gaya untuk logo baru */
+.sidebar-logo {
+    max-height: 40px;
+    width: auto;
+    margin-bottom: 10px;
+}
+
+.sidebar-header h3 {
+    color: var(--text-light);
+    margin: 0;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    padding: 9px 20px;
+    margin: 2px 10px;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.2s, color 0.2s;
+    font-size: 0.9rem;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+    background-color: var(--gold);
+    color: var(--sidebar-bg);
+    font-weight: 600;
+}
+
+.sidebar-nav a i {
+    margin-right: 15px;
+    width: 20px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    padding: 15px;
+}
+
+.logout-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #343a40;
+    color: var(--text-light);
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #D4AF37;
+}
+
+/* =================================
+   Main Content - New Theme
+   ================================= */
+
+.admin-main-content {
+    flex-grow: 1;
+    padding: 30px;
+    margin-left: 250px;
+    transition: margin-left 0.3s ease;
+}
+
+.admin-content h2 {
+    color: var(--text-dark);
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: 1.8rem;
+}
+
+.admin-content .subtitle {
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    display: block;
+}
+
+/* =================================
+   Mobile Header
+   ================================= */
+.mobile-header {
+    display: none; /* Sembunyikan di desktop */
+    background-color: var(--card-bg);
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+
+.menu-toggle-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    cursor: pointer;
+}
+
+.mobile-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--text-dark);
+}
+
+
+/* =================================
+   Responsive (Mobile) Styles
+   ================================= */
+@media (max-width: 768px) {
+    .admin-sidebar {
+        left: -250px; /* Sembunyikan sidebar di luar layar */
+    }
+
+    .admin-sidebar.is-open {
+        left: 0; /* Tampilkan sidebar saat class 'is-open' ditambahkan */
+    }
+
+    .admin-main-content {
+        margin-left: 0; /* Konten memenuhi seluruh layar */
+    }
+    
+    .mobile-header {
+        display: flex; /* Tampilkan header mobile */
+        align-items: center;
+        gap: 15px;
+    }
+}
+
+
+/* =================================
+   Dashboard Cards
+   ================================= */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.dashboard-card {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.dashboard-card .card-icon {
+    font-size: 1.5rem;
+    background-color: rgba(212, 175, 55, 0.1);
+    color: var(--gold);
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.dashboard-card .card-value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.dashboard-card .card-label {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+
+/* =================================
+   Tables - New Theme
+   ================================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+th, td {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+    text-align: left;
+    vertical-align: middle;
+}
+th {
+    background-color: #f8f9fa;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+td {
+    color: var(--text-muted);
+}
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* =================================
+   Forms - New Theme
+   ================================= */
+.styled-form {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    margin-top: 20px;
+}
+.styled-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+.styled-form input[type="text"],
+.styled-form input[type="email"],
+.styled-form input[type="password"],
+.styled-form input[type="number"],
+.styled-form input[type="file"],
+.styled-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    background-color: #fff;
+    color: var(--text-dark);
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.styled-form input:focus, .styled-form textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+}
+
+/* =================================
+   Buttons - New Theme
+   ================================= */
+.btn-primary, .btn-add {
+    padding: 12px 22px;
+    background-color: var(--gold);
+    color: var(--sidebar-bg);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+.btn-primary:hover, .btn-add:hover {
+    background-color: #c5a22f;
+}
+
+.btn-secondary {
+    padding: 12px 22px;
+    background-color: #e9ecef;
+    color: var(--text-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 600;
+}
+.btn-edit { background-color: #0d6efd; color: white; padding: 5px 10px; border-radius: 3px; text-decoration: none; font-size: 0.8rem; }
+.btn-delete { background-color: #dc3545; color: white; padding: 5px 10px; border-radius: 3px; border: none; cursor: pointer; font-size: 0.8rem; }
+
+/* =================================
+   Other Elements
+   ================================= */
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.notification {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+}
+.notification.success {
+    background-color: #198754;
+}
+.notification.error {
+    background-color: #dc3545;
+}
+
+.drag-info {
+    background-color: #e9ecef;
+    border-left: 4px solid var(--gold);
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+/* =================================
+   Login Page - Solid Theme
+   ================================= */
+
+body.admin-login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('../images/Background.png'); /* Menambahkan background image */
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+/* Menghapus lapisan gelap */
+body.admin-login-page::before {
+    display: none;
+}
+
+.login-form {
+    width: 400px;
+    padding: 40px;
+    background: var(--card-bg); /* Latar belakang solid putih */
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    /* Menghapus efek blur */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.login-header {
+    margin-bottom: 15px;
+}
+
+.login-logo {
+    max-height: 50px;
+    width: auto;
+    margin-bottom: -20px;
+}
+
+.login-header h2 {
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: var(--text-dark); /* Teks gelap */
+}
+
+.login-header p {
+    color: var(--text-muted);
+}
+
+.login-form label {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+/* Mengembalikan gaya input menjadi solid */
+.login-form input {
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    color: var(--text-dark);
+    border-radius: 5px;
+    padding: 12px;
+}
+
+.login-form input:focus {
+    background-color: #fff;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+}
+
+.login-form input::placeholder {
+    color: #adb5bd;
+}
+
+.login-form .btn-primary {
+    background-color: var(--gold);
+    color: var(--sidebar-bg);
+    border-radius: 5px;
+    padding: 12px;
+    font-weight: 600;
+}
+
+.back-to-site {
+    display: block;
+    margin-top: 20px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+.back-to-site:hover {
+    color: var(--gold);
+}
+
+/* =================================
+   MODAL KONFIRMASI RESET
+================================= */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.show .modal-content {
+    transform: scale(1);
+}
+
+.modal-content h3 {
+    color: var(--text-dark);
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.modal-content p {
+    color: var(--text-muted);
+    margin-bottom: 25px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* =================================
+   MODAL GANTI PASSWORD - TEMA BARU
+================================= */
+.password-modal .modal-content {
+    text-align: left; /* Teks rata kiri */
+    padding: 0; /* Hapus padding default */
+    overflow: hidden; /* Agar border-radius diterapkan pada header */
+}
+
+.password-modal .modal-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 25px;
+    background-color: #f8f9fa; /* Latar belakang header abu-abu muda */
+    border-bottom: 1px solid var(--border-color);
+}
+
+.password-modal .modal-header .icon-wrapper {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(212, 175, 55, 0.1); /* Latar belakang ikon emas transparan */
+    color: var(--gold);
+    border-radius: 50%;
+    font-size: 1.2rem;
+}
+
+.password-modal .modal-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.password-modal .modal-body {
+    padding: 25px;
+}
+
+.password-modal .form-group {
+    margin-bottom: 18px; /* Jarak antar form-group */
+}
+
+.password-modal .modal-footer {
+    padding: 20px 25px;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: flex-end; /* Tombol di sebelah kanan */
+    gap: 10px;
+    border-top: 1px solid var(--border-color);
+}
+
+.password-modal .form-group label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* =================================
+   MODAL KONFIRMASI HAPUS
+================================= */
+.delete-modal .modal-content {
+    max-width: 420px; /* Sedikit lebih kecil */
+    text-align: center;
+}
+
+.delete-modal .modal-icon {
+    font-size: 3rem;
+    color: #dc3545; /* Merah untuk bahaya */
+    margin-bottom: 15px;
+}
+
+.delete-modal h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.delete-modal p {
+    color: var(--text-muted);
+    margin-bottom: 25px;
+}
+
+.delete-modal .modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.delete-modal .btn-delete-confirm {
+    background-color: #dc3545;
+    color: white;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.delete-modal .btn-delete-confirm:hover {
+    background-color: #c82333;
+}
+
+/* =================================
+   PENYESUAIAN TAMPILAN RESPONSIVE
+================================= */
+@media (max-width: 768px) {
+    
+    /* Membuat padding konten utama lebih nyaman di mobile */
+    .admin-main-content {
+        padding: 20px;
+    }
+
+    /* == Tabel Responsif model Kartu == */
+    
+    /* Sembunyikan header tabel asli */
+    table thead {
+        display: none;
+    }
+
+    /* Ubah setiap baris menjadi seperti kartu */
+    table tr {
+        display: block;
+        margin-bottom: 20px;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        background: var(--card-bg);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    
+    /* Atur sel di dalam kartu */
+    table td {
+        display: flex;
+        justify-content: space-between; /* Mendorong label dan konten berjauhan */
+        align-items: center;
+        padding: 12px 15px;
+        border-bottom: 1px solid var(--border-color);
+        text-align: right; /* Membuat konten (nilai) rata kanan */
+    }
+
+    /* Hapus garis bawah pada sel terakhir di setiap kartu */
+    table tr td:last-child {
+        border-bottom: none;
+    }
+
+    /* Buat label dari atribut 'data-label' */
+    table td::before {
+        content: attr(data-label); /* Mengambil teks dari atribut data-label */
+        font-weight: 600;
+        color: var(--text-dark);
+        text-align: left;
+        padding-right: 15px;
+    }
+
+    /* Penyesuaian untuk gambar di dalam tabel */
+    table td img {
+        max-height: 60px;
+        width: auto;
+        border-radius: 4px;
+        margin-left: auto; /* Memastikan gambar tetap di kanan jika ukurannya kecil */
+    }
+    
+    /* Penyesuaian untuk tombol Aksi */
+    table td .btn-edit,
+    table td .btn-delete {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    /* Agar tombol tidak menempel */
+    table td > a + form {
+        margin-left: 5px;
+    }
+}
+
+/* =================================
+   STYLE UNTUK FORM GALERI
+================================= */
+
+/* Grid untuk gambar yang sudah ada */
+.existing-images-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.existing-image-item {
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+}
+
+.existing-image-item img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 3px;
+    margin-bottom: 8px;
+}
+
+.existing-image-item select,
+.existing-image-item input[type="text"],
+.existing-image-item input[type="number"] {
+    width: 100%;
+    padding: 6px;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.existing-image-item input[type="number"] {
+    width: 80px;
+}
+
+.existing-image-item label {
+    font-size: 0.8rem;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Penampung untuk baris upload gambar baru */
+.new-image-item {
+    border: 1px dashed #ccc;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+/* Grid untuk input di baris gambar baru */
+.new-image-inputs {
+    display: grid;
+    grid-template-columns: 1fr 150px 200px 80px auto;
+    gap: 10px;
+    align-items: center;
+}
+
+.new-image-inputs input,
+.new-image-inputs select {
+    padding: 8px;
+    width: 100%;
+}
+
+.new-image-inputs button {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.new-image-inputs button:hover {
+    background-color: #c82333;
+}
+
+/* Tombol "Tambah Gambar Lagi" */
+#add-image-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+/* Wadah untuk tombol simpan & batal */
+.form-submit-actions {
+    margin-top: 30px;
+    padding-bottom: 20px; /* Memberi ruang di bagian bawah */
+}
+
+
+/* Tampilan Form Galeri di Mobile */
+@media (max-width: 768px) {
+    /* Membuat grid gambar yang ada menjadi 1 kolom */
+    .existing-images-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Membuat input untuk gambar baru tersusun ke bawah */
+    .new-image-inputs {
+        grid-template-columns: 1fr;
+    }
+}

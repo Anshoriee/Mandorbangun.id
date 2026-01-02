@@ -1,0 +1,348 @@
+/* =================================
+   THEME HALAMAN GALERI MODERN
+================================= */
+
+/* Menggunakan variabel dari style.css */
+:root {
+    --bg-dark: #0a0a0a;
+    --bg-card: #1a1a1a;
+    --gold: #D4AF37;
+    --text-light: #f0f0f0;
+    --text-secondary: #a0a0a0;
+    --font-primary: 'Poppins', sans-serif;
+    --font-display: 'Poppins', serif;
+}
+
+/* Container Utama */
+.gallery-page-container {
+    padding: 140px 0 80px 0;
+    background-color: var(--bg-dark);
+    min-height: 100vh;
+}
+
+.section-title {
+    color: var(--text-light);
+}
+.section-title h2 {
+    color: var(--gold);
+}
+.section-title p {
+    color: var(--text-secondary);
+}
+
+/* Filter Buttons */
+.gallery-filters {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.filter-btn {
+    display: inline-block;
+    background-color: transparent;
+    color: var(--gold);
+    padding: 10px 25px;
+    margin: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: var(--font-primary);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    border: 2px solid var(--gold);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background-color: var(--gold);
+    color: var(--bg-dark);
+}
+
+/* Grid Portfolio & Animasi Halus */
+.portfolio-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+.portfolio-gallery-grid .group {
+    height: 250px;
+    position: relative; /* Diperlukan untuk overlay */
+    border-radius: 8px;
+    overflow: hidden; /* Menyembunyikan gambar yang membesar */
+}
+
+/* =================================
+   EFEK HOVER UNTUK JUDUL GAMBAR
+================================= */
+
+.portfolio-gallery-grid .group img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.portfolio-gallery-grid .group:hover img {
+    transform: scale(1.1); /* Efek zoom pada gambar */
+}
+
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    opacity: 0; /* Sembunyikan secara default */
+    transition: opacity 0.4s ease;
+}
+
+.portfolio-gallery-grid .group:hover .card-overlay {
+    opacity: 1; /* Tampilkan saat hover */
+}
+
+.card-overlay h3 {
+    color: var(--text-light);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0;
+    transform: translateY(15px); /* Mulai dari bawah */
+    transition: transform 0.4s ease;
+}
+
+.portfolio-gallery-grid .group:hover .card-overlay h3 {
+    transform: translateY(0); /* Bergerak ke posisi normal saat hover */
+}
+
+
+/* =================================
+   OFF-CANVAS PANEL ELEGANT & MODERN
+================================= */
+body.overflow-hidden {
+    overflow: hidden;
+}
+
+#offcanvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5000;
+    pointer-events: none;
+}
+
+#offcanvas-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 10, 10, 0.6); /* Darker overlay */
+    backdrop-filter: blur(8px); /* Stronger blur */
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+#offcanvas-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    max-width: 550px; /* Panel sedikit lebih lebar */
+    background-color: var(--bg-card);
+    color: var(--text-light);
+    transform: translateX(100%);
+    /* Transisi yang lebih halus dan premium */
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    box-shadow: -20px 0 50px rgba(0,0,0,0.5);
+    border-left: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+/* State ketika panel aktif */
+#offcanvas-container.active {
+    pointer-events: auto;
+}
+#offcanvas-container.active #offcanvas-overlay {
+    opacity: 1;
+}
+#offcanvas-container.active #offcanvas-panel {
+    transform: translateX(0);
+}
+
+/* Header Panel */
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 2.5rem; /* Padding lebih besar */
+    flex-shrink: 0;
+    background-color: var(--bg-dark); /* Warna latar belakang berbeda untuk header */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Bayangan sebagai pemisah */
+    position: relative; /* Diperlukan untuk z-index */
+    z-index: 10;
+}
+
+#panel-title {
+    font-family: var(--font-display);
+    font-size: 2rem; /* Judul lebih besar dan menonjol */
+    font-weight: 700;
+    color: var(--gold);
+    margin: 0;
+    line-height: 1.2;
+}
+
+#close-panel-btn {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #9CA3AF;
+    font-size: 1.5rem;
+    cursor: pointer;
+    width: 44px; /* Sedikit lebih besar */
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+#close-panel-btn:hover {
+    color: white;
+    background-color: rgba(212, 175, 55, 0.1);
+    border-color: rgba(212, 175, 55, 0.3);
+    transform: rotate(90deg);
+}
+
+/* Body Panel */
+.panel-body {
+    padding: 2.5rem; /* Padding konsisten dan lebih besar */
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+/* Custom Scrollbar untuk sentuhan elegan */
+.panel-body::-webkit-scrollbar {
+    width: 8px;
+}
+.panel-body::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.2);
+}
+.panel-body::-webkit-scrollbar-thumb {
+    background-color: var(--gold);
+    border-radius: 10px;
+    border: 2px solid var(--bg-card);
+}
+.panel-body::-webkit-scrollbar-thumb:hover {
+    background-color: #e6c55b; /* Emas lebih terang saat di-hover */
+}
+
+.main-image-wrapper {
+    width: 100%;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3); /* Bayangan halus untuk kedalaman */
+}
+#panel-main-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    display: block;
+}
+
+/* Thumbnails */
+.thumbnails-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.thumbnail-item {
+    position: relative;
+    cursor: pointer;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+.thumbnail-item:hover {
+    transform: translateY(-4px); /* Efek terangkat saat di-hover */
+}
+
+.thumbnail-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.4), rgba(212, 175, 55, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.thumbnail-item img {
+    width: 100%;
+    height: 85px; /* Thumbnail lebih tinggi */
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.thumbnail-item:hover img {
+    transform: scale(1.15);
+}
+
+.thumbnail-item.thumbnail-active {
+    /* Efek glow untuk thumbnail aktif */
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+}
+
+.thumbnail-item.thumbnail-active::after {
+    opacity: 1;
+}
+
+/* Caption di dalam thumbnail */
+.thumbnail-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 14px 4px 6px 4px;
+    user-select: none;
+    transition: all 0.3s ease;
+}
+
+.thumbnail-item.thumbnail-active .thumbnail-caption {
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+/* Deskripsi di bawah */
+.description-wrapper {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+#panel-description {
+    font-size: 1.1rem;
+    color: var(--text-secondary); /* Warna lebih lembut untuk deskripsi */
+    font-weight: 400; /* Bobot lebih ringan agar mudah dibaca */
+    line-height: 1.7;
+}

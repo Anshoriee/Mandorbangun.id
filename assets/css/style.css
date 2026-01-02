@@ -1,0 +1,983 @@
+/* ========================
+   CSS Reset & Variables
+========================= */
+/* Simple CSS Reset */
+:root {
+    /* Colors */
+    --bg-dark: #0a0a0a;
+    --bg-card: #1a1a1a;
+    --gold: #D4AF37;
+    --text-light: #f0f0f0;
+    --text-secondary: #a0a0a0;
+
+    /* Fonts */
+    --font-primary: 'Poppins', sans-serif;
+    --font-display: 'Poppins', serif;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+
+input, button, textarea, select {
+    font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ========================
+   SCROLLBAR KUSTOM ELEGANT
+========================= */
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #000; /* Latar belakang track yang sangat gelap */
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--gold);
+    border-radius: 20px;
+    border: 2px solid var(--bg-dark); /* Border agar thumb terlihat 'mengambang' */
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background-color: #f0c94b; /* Warna emas lebih cerah saat di-hover */
+}
+
+
+main {
+    padding-top: 40px; /* Sesuaikan nilai ini jika tinggi header Anda berbeda */
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Kelas bantuan untuk menengahkan konten di dalam sebuah section */
+.center-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* min-height: 100vh; <-- Dihapus untuk memperbaiki jarak */
+    padding: 120px 20px 80px; /* Padding atas untuk header, padding bawah untuk jarak ke section berikutnya */
+}
+
+/* Aturan untuk memastikan gambar responsif dan tidak terpotong */
+.center-content img {
+    max-width: 80%; /* Lebar gambar dikecilkan menjadi 80% dari wadahnya */
+    max-height: 80vh; /* Tinggi gambar tidak akan melebihi 80% tinggi layar */
+    height: auto; /* Menjaga rasio aspek gambar */
+    object-fit: contain; /* Memastikan seluruh gambar terlihat tanpa terpotong */
+}
+
+.logo img {
+    height: 65px;
+    display: block;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-display);
+    color: var(--gold);
+    line-height: 1.2;
+}
+
+section {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ========================
+   Header & Navigation
+========================= */
+.header {
+    background-color: rgba(10, 10, 10, 0.7);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+    height: 105px; /* Tambahkan tinggi header agar lebih mudah dihitung */
+}
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--gold);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--gold);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.hamburger {
+    display: none; /* Sembunyikan di desktop secara default */
+    background: none;
+    border: none;
+    color: var(--gold);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* ========================
+        Hero Section
+========================= */
+.hero {
+    /* Tambahkan padding atas untuk mengimbangi tinggi header */
+    padding-top: 120px; /* Gunakan nilai yang sedikit lebih besar dari tinggi header (95px) */
+    height: 100vh;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4)), url('../images/Background.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+}
+
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 3.8rem;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    color: var(--text-secondary);
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--gold);
+    color: var(--bg-dark);
+    padding: 12px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    border: 2px solid var(--gold);
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: transparent;
+    color: var(--gold);
+}
+
+/* ========================
+     Services Section
+========================= */
+#services {
+    padding-top: 100px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.service-card {
+    background-color: var(--bg-card);
+    padding: 40px 30px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
+}
+
+.service-card .icon {
+    font-size: 3rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+.service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.service-card p {
+    color: var(--text-secondary);
+}
+
+/* ========================
+   Alur Kerja Section (Slider Cards)
+========================= */
+.alur-kerja-section {
+    padding: 10px 0;
+    background-color: var(--bg-dark);
+}
+
+.alur-kerja-container {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    gap: 10px;
+    height: 70vh;
+    min-height: 500px;
+}
+
+.card {
+    position: relative;
+    flex: 1; /* Diubah agar memenuhi ruang yang tersedia */
+    max-width: 1000px; /* Batas lebar maksimum untuk card */
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: flex 0.7s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Diubah agar seluruh gambar terlihat */
+    transition: transform 0.5s ease;
+}
+
+.card .content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 25px;
+    color: white;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.card .content h2 {
+    font-family: var(--font-display);
+    color: var(--gold);
+    margin-bottom: 10px;
+}
+
+.card .content p {
+    font-size: 0.9em;
+    color: var(--text-light);
+}
+
+.card:hover {
+    flex: 2; /* Efek hover tetap ada jika ada lebih dari 1 card */
+}
+
+.card:hover img {
+    transform: scale(1.05);
+}
+
+.card:hover .content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* ========================
+     Portfolio Section
+========================= */
+#portfolio {
+    background-color: var(--bg-dark);
+    padding-top: 100px;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px; 
+}
+
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.1);
+}
+
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    opacity: 1;
+}
+
+.portfolio-overlay h3 {
+    color: var(--text-light);
+    font-size: 1.2rem;
+}
+
+/* ========================
+         Footer
+========================= */
+.footer {
+    background-color: #000;
+    padding: 20px 0 10px;
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-widget h4 {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 20px;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-widget h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 2px;
+    background-color: var(--gold);
+}
+
+.footer-widget p,
+.footer-widget a {
+    color: var(--text-secondary);
+    text-decoration: none;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a:hover {
+    color: var(--gold);
+    padding-left: 5px;
+    transition: all 0.3s ease;
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.contact-info i {
+    color: var(--gold);
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+address {
+    font-style: normal;
+}
+
+.social-media a {
+    color: var(--text-secondary);
+    font-size: 1.3rem;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.social-media a:hover {
+    color: var(--gold);
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 10px;
+    border-top: 1px solid #222;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+/* ========================
+   Pop-up Ads (SMOOTH ANIMATION)
+========================= */
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.popup-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup-container {
+    position: relative;
+    max-width: 500px;
+    width: 90%;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    /* Transisi untuk efek hover dan animasi muncul */
+    transition: transform 0.3s ease-in-out, opacity 0.4s ease;
+}
+
+.popup-overlay.show .popup-container {
+    opacity: 1;
+}
+
+/* EFEK HOVER: Container akan membesar saat kursor berada di area pop-up */
+.popup-overlay:hover .popup-container {
+    transform: scale(1.03);
+}
+
+
+.popup-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.popup-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 35px;
+    height: 35px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+    z-index: 10001;
+}
+
+.popup-close:hover {
+    background: white;
+    transform: scale(1.1) rotate(90deg);
+}
+
+.popup-close:active {
+    transform: scale(0.95);
+}
+
+.popup-link {
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* ========================
+      WhatsApp Floating Button
+========================= */
+.whatsapp-fab {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25D366;
+    color: #FFF;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    z-index: 999;
+    text-decoration: none;
+}
+
+.whatsapp-fab:hover {
+    transform: scale(1.1);
+}
+
+/* ========================
+    Responsive Design
+========================= */
+
+@media (max-width: 768px) {
+    /* Perubahan untuk Navbar dimulai di sini */
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .nav-links.active {
+        display: block;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-dark);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        padding: 20px 0;
+        text-align: center;
+        border-top: 1px solid rgba(212, 175, 55, 0.1);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        animation: fadeInDown 0.3s ease-out;
+    }
+
+    /* Mengurangi jarak antar section di mobile */
+    section {
+        padding: 50px 0; /* Mengurangi padding atas & bawah section dari 80px menjadi 50px */
+    }
+
+    #portfolio {
+        padding-top: 60px; /* Mengurangi padding atas portfolio dari 100px menjadi 60px */
+    }
+
+    .section-title {
+        margin-bottom: 40px; /* Mengurangi jarak dari judul ke konten di bawahnya */
+    }
+    
+
+    /* Untuk layar sangat kecil (di bawah 480px) */
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .section-title h2 {
+        font-size: 1.8rem;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr; /* Satu kolom penuh */
+    }
+}
+
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .nav-links ul {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .nav-links li {
+        list-style: none;
+        border-bottom: 1px solid #222;
+        margin: 0;
+    }
+
+    .nav-links li:last-child {
+        border-bottom: none;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 18px 25px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        color: var(--text-light);
+        text-decoration: none;
+        transition: background-color 0.3s ease, color 0.3s ease, padding-left 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .nav-links a:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 5px;
+        height: 100%;
+        background-color: var(--gold);
+        transform: translateX(-5px);
+        transition: transform 0.3s ease;
+    }
+
+    .nav-links a:hover {
+        color: var(--gold);
+        background-color: rgba(212, 175, 55, 0.1);
+        padding-left: 30px;
+    }
+
+    .nav-links a:hover:before {
+        transform: translateX(0);
+    }
+    
+    .hamburger {
+        display: block;
+    }
+
+    .alur-kerja-container {
+        flex-direction: column;
+        height: auto; 
+        gap: 20px;
+        padding: 0 5px;
+    }
+
+    .card {
+        flex: none;
+        width: 100%;
+        height: 290px;
+    }
+
+    .card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    .card:hover {
+        flex: 0.5;
+    }
+
+    /* T TAMBAHKAN BLOK INI */
+    .card.active .content {
+        transform: translateY(0);
+        opacity: 1;
+}
+
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-widget h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .contact-info p {
+        justify-content: center;
+    }
+
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+
+    .section-title h2 {
+        font-size: 2rem;
+    }
+
+    /* Pop-up Responsive */
+    .popup-container {
+        max-width: 95%;
+        margin: 10px;
+        border-radius: 10px;
+    }
+
+    .popup-close {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+        top: 10px;
+        right: 10px;
+    }
+
+    .popup-image {
+        border-radius: 10px;
+        max-height: 80vh;
+        object-fit: contain;
+    }
+}
+
+/* Animation Effects */
+@keyframes popupFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes popupFadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+}
+
+.popup-container.animate-in {
+    animation: popupFadeIn 0.3s ease forwards;
+}
+
+.popup-container.animate-out {
+    animation: popupFadeOut 0.3s ease forwards;
+}
+
+/* Menggunakan font Inter untuk tampilan yang modern */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Mengubah gradien overlay saat kursor diarahkan ke kartu */
+.category-card:hover::before {
+     background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2));
+}
+
+/* Penyesuaian agar section-title dari tema Anda berfungsi dengan baik */
+#category-gallery .section-title h2 {
+    color: #333; /* Menyamakan warna judul */
+}
+
+#category-gallery .section-title p {
+    color: #666; /* Menyamakan warna sub-judul */
+}
+
+/* Gaya khusus untuk footer dengan 2 kolom */
+.footer-grid.two-col-footer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* Membuat widget navigasi tidak terlihat */
+.footer-widget.invisible-widget {
+    visibility: hidden;
+}
+
+/* =================================
+   PRELOADER DENGAN LOGO KUSTOM
+================================= */
+#page-preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-dark); /* Latar belakang gelap sesuai tema */
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Sembunyi secara default */
+    pointer-events: none;
+    transition: opacity 0.4s ease-in-out;
+}
+
+#page-preloader.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.spinner {
+    width: 80px;
+    height: 80px;
+    position: relative;
+}
+
+/* Pseudo-elemen untuk membuat elemen lain di dalam spinner */
+.spinner::before, .spinner::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+}
+
+/* Lingkaran luar yang berputar (efek loading) */
+.spinner::before {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 3px solid transparent;
+    border-top-color: var(--gold); /* Warna emas sesuai tema Anda */
+    animation: spin 1.5s linear infinite;
+}
+
+/* Logo Anda di bagian tengah */
+.spinner::after {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    /* MEMANGGIL LOGO ANDA */
+    background-image: url('../images/Logo.png'); /* Pastikan path ini benar */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* Animasi denyut (pulse) untuk logo */
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Animasi untuk putaran */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Animasi untuk efek denyut pada logo */
+@keyframes pulse {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(0.95);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.05);
+        opacity: 1;
+    }
+}
+
